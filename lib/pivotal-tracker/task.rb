@@ -34,7 +34,8 @@ module PivotalTracker
       return Task.parse(response)
     end
 
-    def update
+    def update(attrs={})
+      update_attributes(attrs)
       response = Client.connection["/projects/#{project_id}/stories/#{story_id}/tasks/#{id}"].put(self.to_xml, :content_type => 'application/xml')
       return Task.parse(response)
     end
